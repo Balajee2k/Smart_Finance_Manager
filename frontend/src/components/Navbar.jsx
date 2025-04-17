@@ -99,7 +99,7 @@ const Navbar = () => {
           />
         </div>
         <div className="mt-4 text-center">
-          <p className="font-semibold text-lg">👤 Haripriya</p>
+          <p className="font-semibold text-lg">👤 Balajee</p>
           <p className="text-sm text-gray-500">priyagr0104@gmail.com</p>
         </div>
         <div className="mt-6 space-y-2">

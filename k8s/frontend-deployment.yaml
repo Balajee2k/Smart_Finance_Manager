@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: finance-manager
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: finance-manager-frontend:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5173
+        env:
+        - name: VITE_API_URL
+          value: "http://backend-service:5000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: finance-manager
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 5173
+    nodePort: 30000
+  selector:
+    app: frontend

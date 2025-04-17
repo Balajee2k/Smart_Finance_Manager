@@ -23,7 +23,7 @@ function SignupPage() {
     const { termsAccepted, ...submitData } = data;
   
     try {
-      const url = "http://localhost:5000/api/user";
+      const url = `${import.meta.env.VITE_API_URL}/api/user`;
       const { data: res } = await axios.post(url, submitData);
       console.log(res.message);
       navigate("/"); 
